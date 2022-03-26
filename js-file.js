@@ -1,4 +1,5 @@
 let myLibrary = [];
+const bookCards = document.querySelector('#book-cards');
 
 function Book(title, author, pages, wasRead) {
     this.title = title;
@@ -13,15 +14,14 @@ function Book(title, author, pages, wasRead) {
 
 // store new book objects into myLibrary array
 function addBookToLibrary(book) {
-    const container = document.querySelector('#card');
-    container.innerHTML = '';
+    bookCards.innerHTML = '';
     myLibrary.push(book);
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
-        const container = document.querySelector('#card');
-        const div = document.createElement('div');
-        div.textContent = book.title;
-        container.appendChild(div);        
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.textContent = book.title;
+        bookCards.appendChild(card);        
     }
 }
 
