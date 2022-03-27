@@ -20,7 +20,13 @@ function addBookToLibrary(book) {
         const book = myLibrary[i];
         const card = document.createElement('div');
         card.classList.add('card');
-        card.textContent = book.title;
+        card.innerHTML = `
+            <div class="title">${book.title}</div>
+            <div class="author">${book.author}</div>
+            <div class="pages">${book.pages}</div>
+            <div class="wasRead"><label for="wasRead">Mark as Read</label>
+            <input type="checkbox"></div>
+            `;
         bookCards.appendChild(card);        
     }
 }
