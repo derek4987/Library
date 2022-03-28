@@ -31,8 +31,8 @@ function addBookToLibrary(book) {
     }
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-const Hobbit = new Book('Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
+const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'yes');
+const Hobbit = new Book('Hobbit', 'J.R.R. Tolkien', 295, 'no');
 addBookToLibrary(theHobbit);
 addBookToLibrary(Hobbit);
 // console.log(theHobbit.info());

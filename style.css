@@ -13,6 +13,10 @@ html {
     background-color: rgb(223, 211, 211);
 }
 
+button {
+    cursor: pointer;
+}
+
 .grid {
     display: grid;
     grid-template-rows: 200px 50px auto;
@@ -20,6 +24,11 @@ html {
     /* grid-template-columns: min(1500px, 100%); */
     justify-content: center;
     min-height: 100vh;
+}
+
+/* add modal-open class to grid using js when add book button selected */
+.grid.modal-open {
+    filter: blur(3px) grayscale(20%);
 }
 
 /* Header items */
@@ -96,4 +105,75 @@ header .library-log {
 }
 .card div {
     font-size: 1.1rem;
+}
+
+/* modal content */
+.modal {
+    /* display: none; */
+    position: fixed;    
+    z-index: 5;
+    /* center modal on screen: top, left, transform */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    background-color: white;
+    padding: 10px 50px 40px 50px;
+    border: 2px solid black;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+
+.modal-header {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    border: none;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    font-size: 1.5rem;
+    align-self: flex-end;
+    position: relative;
+    left: 30px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    line-height: 2rem;
+    font-size: 1.2rem;
+    margin: 9px 0 20px 1px;
+}
+
+input[type=radio] {
+    cursor: pointer;
+}
+
+.modal-radio div {
+    margin-bottom: -10px;
+}
+
+.modal-buttons {
+    margin: 10px 5px 0 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-buttons button {
+    font-size: 1.3rem;
+    height: fit-content;
+    width: 100px;
+    padding: 5px 0;
 }
