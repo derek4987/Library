@@ -17,6 +17,10 @@ button {
     cursor: pointer;
 }
 
+input[type=radio], input[type=checkbox] {
+    cursor: pointer;
+}
+
 .grid {
     display: grid;
     grid-template-rows: 200px 50px auto;
@@ -77,14 +81,29 @@ header .library-log {
     position: sticky;
     top: 200px;
     box-shadow: 0px 5px 5px gray;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#addBook {
+    font-size: 2rem;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 30px 
+}
+
+.nav span {
+    font-size: 1.5rem;
 }
 
 /* cards items */
 #book-cards {
     grid-row: 3 / 4;
     background-color: rgb(235, 233, 233);
-    display: flex;
-    flex-flow: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 350px));
     gap: 30px;
     padding: 30px;
 }
@@ -94,22 +113,39 @@ header .library-log {
     padding: 15px 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 250px;
-    height: 200px;
+    justify-content: space-between;
+    gap: 15px;
+    width: 350px;
+    height: 300px;
     box-shadow: 2px 5px 5px gray;
+    
 }
 
 .card .title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+
 }
 .card div {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+}
+
+.delete-entry {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    font-size: 1.3rem;
+    width: 20px;
+    left: 12px;
+    bottom: 10px;
+    border: none;
+    margin-left: auto;
+    margin-bottom: -40px;
+    background-color: rgb(235, 233, 233);
 }
 
 /* modal content */
 .modal {
-    /* display: none; */
+    display: none;
     position: fixed;    
     z-index: 5;
     /* center modal on screen: top, left, transform */
@@ -121,6 +157,10 @@ header .library-log {
     background-color: white;
     padding: 10px 50px 40px 50px;
     border: 2px solid black;
+}
+
+.modal.modal-open {
+    display: block;
 }
 
 .modal-content {
@@ -155,10 +195,6 @@ input {
     line-height: 2rem;
     font-size: 1.2rem;
     margin: 9px 0 20px 1px;
-}
-
-input[type=radio] {
-    cursor: pointer;
 }
 
 .modal-radio div {

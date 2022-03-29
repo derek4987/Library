@@ -22,14 +22,17 @@
                 </ul>
             </div>
         </header>
-        <div class="nav">Nav Bar</div>
+        <div class="nav">
+            <button id="addBook">+</button>
+            <span>Add Book</span>
+        </div>
         <div id="book-cards"></div>
     </div>
     <div class="modal">
         <div class="modal-content">
             <button class="close-modal">x</button>
             <div class="modal-header">Add New Book</div>
-            <form action="http://httpbin.org/post" method="post">
+            <form id="form" >
                 <label for="title">Title*</label>
                 <input type="text" name="title" id="title" required>
                 <label for="author">Author*</label>
@@ -48,7 +51,7 @@
                     </div>
                 </div>
                 <div class="modal-buttons">
-                    <button type="submit">Submit</button>
+                    <button id="modal-submit">Submit</button>
                     <button type="reset">Clear</button>
                 </div>
             </form>
