@@ -66,13 +66,14 @@ function closeModal() {
 }
 
 // submit data and add card ***need to make it work
-// document.querySelector('#modal-submit').addEventListener('click', function(e) {
-//     const title = document.querySelector('#title').textContent;
-//     const author = document.querySelector('#author').textContent;
-//     const pages = document.querySelector('#pages').textContent;
-//     const newBook = Book(title, author, pages, no);
-//     addBookToLibrary(newBook);
-// })
+document.querySelector('#modal-submit').addEventListener('click', function(e) {
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const newBook = Book(title, author, pages, no);
+    // addBookToLibrary(newBook);
+    myLibrary.push(newBook);
+})
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'yes');
 const Hobbit = new Book('Hobbit', 'J.R.R. Tolkien', 295, 'no');
