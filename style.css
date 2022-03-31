@@ -186,7 +186,7 @@ header .library-log {
     left: 30px;
 }
 
-.modal-content form {
+.modal-content #form {
     display: flex;
     flex-direction: column;
 }
