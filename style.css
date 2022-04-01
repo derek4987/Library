@@ -17,6 +17,10 @@ button {
     cursor: pointer;
 }
 
+.disable {
+    pointer-events: none;
+}
+
 input[type=radio], input[type=checkbox] {
     cursor: pointer;
 }

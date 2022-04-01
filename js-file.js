@@ -92,8 +92,7 @@ function showModal() {
     modal.classList.add("modal-open");
     const grid = document.querySelector(".grid");
     grid.classList.add("modal-open");
-    document.querySelector('.grid-button').disabled = true;
-    document.querySelector('#wasRead').disabled = true;
+    grid.classList.add('disable');
 }
 
 
@@ -103,6 +102,7 @@ function closeModal() {
     modal.classList.remove("modal-open");
     const grid = document.querySelector(".grid");
     grid.classList.remove("modal-open");
+    grid.classList.remove("disable");
     // buttons
     document.querySelector('.grid-button').disabled = false;
     // checkbox
@@ -143,10 +143,4 @@ function clear() {
     pages.value = '';
     document.getElementById('yes').checked = false;
     document.getElementById('no').checked = true;
-}
-
-
-// delete card
-function deleteEntry(e) {
-    
 }
