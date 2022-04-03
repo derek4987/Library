@@ -4,6 +4,7 @@ const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const grid = document.querySelector('.grid');
+let card;
 // const wasRead = document.querySelector('input[name="wasRead"]:checked');
 
 function Book(title, author, pages, wasRead) {
@@ -74,17 +75,33 @@ for (let i=0; i<myLibrary.length; i++) {
 };
 
 // delete card
-let cardxbutton = document.querySelectorAll('.delete-entry');
-console.log(cardxbutton);
-for (let i=0; i<myLibrary.length; i++) {
-    cardxbutton[i].addEventListener('click', function(e) {
-        let parent = e.target.parentNode;
-        console.log(parent);
-        bookCards.removeChild(parent);
-        myLibrary.splice(i,1);
-    })
-};
+document.addEventListener('click', function(e) {
+    if (e.target.matches('.delete-entry')) {
+        deleteEntry(e);
+        
+        if (myLibrary.length > 1) {
+            myLibrary.splice(i,1);
+        } else {
+            myLibrary = [];
+        };
+        card = document.querySelectorAll('.card');
+    }
 
+}, false);
+
+
+// for (let i=0; i<card.length; i++) {
+//     document.querySelector(`#x${i}`).addEventListener('click', function(e) {
+//         deleteEntry(e);
+
+//         if (myLibrary.length > 1) {
+//             myLibrary.splice(i,1);
+//         } else {
+//             myLibrary = [];
+//         };
+//         card = document.querySelectorAll('.card');
+//     });
+// }
 
 // show modal function
 function showModal() {
@@ -123,17 +140,18 @@ function addBookToLibrary(book) {
             wasRead = 'checked';
         } else wasRead = '';
         card.classList.add('card');
-        card.classList.add(`c${i}`);
         card.innerHTML = `
-            <button class="delete-entry grid-button">x</button>
+            <button class="delete-entry grid-button" id="x${i}">x</button>
             <div class="title">${book.title}</div>
             <div class="author">${book.author}</div>
             <div class="pages">${book.pages}</div>
             <div class="wasRead"><label for="wasRead">Mark as Read</label>
-            <input class="checkbox" id="wasRead" type="checkbox" ${wasRead}></div>
+            <input class="checkbox box${i}" id="wasRead" type="checkbox" ${wasRead}></div>
             `;
         bookCards.appendChild(card);        
     }
+    card = document.querySelectorAll('.card');
+    console.log(card)
 }
 
 // clear form function
@@ -144,3 +162,52 @@ function clear() {
     document.getElementById('yes').checked = false;
     document.getElementById('no').checked = true;
 }
+
+// delete card function
+// function deleteEntry() {
+    // let cardxbutton = document.querySelectorAll('.delete-entry');
+    // console.log(cardxbutton);
+    // for (let i=0; i<myLibrary.length; i++) {
+    //     cardxbutton[i].addEventListener('click', function(e) {
+    //         let parent = e.target.parentNode;
+    //         console.log(parent);
+    //         bookCards.removeChild(parent);
+    //         myLibrary.splice(i,1);
+    //     })
+    // };
+// }
+
+function deleteEntry(e) {
+    let parent = e.target.parentNode;
+    console.log(parent);
+    bookCards.removeChild(parent);
+}
+
+// function deleteEntry() {
+//     const cardxbutton = document.querySelectorAll('.delete-entry')
+//     for (let i=0; i<myLibrary.length; i++) {
+//         cardxbutton[i].addEventListener('click', function(e) {
+//             let parent = e.target.parentNode;
+//             console.log(parent);
+//             bookCards.removeChild(parent);
+//             if (myLibrary.length > 1) {
+//                 myLibrary.splice(i,1);
+//             } else {
+//                 myLibrary = [];
+//             }
+//         })
+//     };
+// }
+
+// function deleteEntry() {
+//     for (let i=0; i<myLibrary.length; i++) {
+//         cardxbutton[i].addEventListener('click', function(e) {
+//             let parent = e.target.parentNode;
+//             console.log(parent);
+//             bookCards.removeChild(parent);
+//             myLibrary.splice(i,1);
+//         })
+//     };
+//     let nodeList = document.querySelectorAll('.delete-entry');
+//     cardxbutton = nodeList;
+// }
