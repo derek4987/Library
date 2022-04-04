@@ -87,20 +87,6 @@ document.addEventListener('click', function(e) {
 
 }, false);
 
-
-// for (let i=0; i<card.length; i++) {
-//     document.querySelector(`#x${i}`).addEventListener('click', function(e) {
-//         deleteEntry(e);
-
-//         if (myLibrary.length > 1) {
-//             myLibrary.splice(i,1);
-//         } else {
-//             myLibrary = [];
-//         };
-//         card = document.querySelectorAll('.card');
-//     });
-// }
-
 // show modal function
 function showModal() {
     const modal = document.querySelector('.modal');
@@ -161,19 +147,6 @@ function clear() {
 }
 
 // delete card function
-// function deleteEntry() {
-    // let cardxbutton = document.querySelectorAll('.delete-entry');
-    // console.log(cardxbutton);
-    // for (let i=0; i<myLibrary.length; i++) {
-    //     cardxbutton[i].addEventListener('click', function(e) {
-    //         let parent = e.target.parentNode;
-    //         console.log(parent);
-    //         bookCards.removeChild(parent);
-    //         myLibrary.splice(i,1);
-    //     })
-    // };
-// }
-
 function deleteEntry(e) {
     let parent = e.target.parentNode;
     console.log(parent);
@@ -194,32 +167,3 @@ function deleteEntry(e) {
         addBookToLibrary(myLibrary[i])
     }
 }
-
-// function deleteEntry() {
-//     const cardxbutton = document.querySelectorAll('.delete-entry')
-//     for (let i=0; i<myLibrary.length; i++) {
-//         cardxbutton[i].addEventListener('click', function(e) {
-//             let parent = e.target.parentNode;
-//             console.log(parent);
-//             bookCards.removeChild(parent);
-//             if (myLibrary.length > 1) {
-//                 myLibrary.splice(i,1);
-//             } else {
-//                 myLibrary = [];
-//             }
-//         })
-//     };
-// }
-
-// function deleteEntry() {
-//     for (let i=0; i<myLibrary.length; i++) {
-//         cardxbutton[i].addEventListener('click', function(e) {
-//             let parent = e.target.parentNode;
-//             console.log(parent);
-//             bookCards.removeChild(parent);
-//             myLibrary.splice(i,1);
-//         })
-//     };
-//     let nodeList = document.querySelectorAll('.delete-entry');
-//     cardxbutton = nodeList;
-// }
