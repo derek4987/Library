@@ -5,17 +5,12 @@ const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const grid = document.querySelector('.grid');
 let card;
-// const wasRead = document.querySelector('input[name="wasRead"]:checked');
 
 function Book(title, author, pages, wasRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.wasRead = wasRead;
-    // this.info = function() {
-    //     let info = `${title} by ${author}, ${pages} pages, ${wasRead}`
-    //     return info;
-    // }
 }
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'yes');
@@ -35,7 +30,7 @@ document.querySelector('.close-modal').addEventListener('click', (e) => {
     closeModal();
 });
 
-// Close modal when you click outside of modal **need to make it work
+// Close modal when you click outside of modal ** Maybe update and add for future use
 // document.querySelector('.grid').addEventListener('click', function(e) {
 //     const isOutside = (e.target.closest('.modal'));
 //     const modal = document.querySelector('.modal');
