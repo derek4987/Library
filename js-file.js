@@ -66,18 +66,10 @@ document.querySelector('#modal-submit').addEventListener('click', function(e) {
     } else return;
 })
 
-// Change was read status
-let elements = document.querySelectorAll('.checkbox');
-console.log(elements);
-for (let i=0; i<myLibrary.length; i++) {
-    elements[i].addEventListener('click', function(e) {
-        let parent = e.target.parentNode.parentNode;
-        console.log(parent)
-    })
-};
-
-// delete card
+// card event listeners
 document.addEventListener('click', function(e) {
+
+    // delete card
     if (e.target.matches('.delete-entry')) {
         // removes entry from page
         deleteEntry(e);
@@ -85,7 +77,32 @@ document.addEventListener('click', function(e) {
         card = document.querySelectorAll('.card');
     }
 
+    // change was read status
+    if (e.target.matches('.checkbox')) {
+        wasRead(e);
+    }
+
 }, false);
+
+// update library log
+function updateLibraryLog() {
+    const totalBooks = document.querySelector('#totalBooks');
+    const booksRead = document.querySelector('#booksRead');
+    const booksNotRead = document.querySelector('#booksNotRead');
+    let read = 0;
+    let notRead = 0;
+
+    for (let i=0; i<myLibrary.length; i++) { 
+        if (myLibrary[i].wasRead === 'yes') {
+            read += 1;
+        } else {
+            notRead += 1;
+        }
+    }
+    totalBooks.textContent = myLibrary.length;
+    booksRead.textContent = read;
+    booksNotRead.textContent = notRead;
+}
 
 // show modal function
 function showModal() {
@@ -128,13 +145,14 @@ function addBookToLibrary(book) {
             <div class="title">${book.title}</div>
             <div class="author">${book.author}</div>
             <div class="pages">${book.pages}</div>
-            <div class="wasRead"><label for="wasRead">Mark as Read</label>
+            <div class="wasRead"><label>Mark as Read</label>
             <input class="checkbox box${i}" id="wasRead" type="checkbox" ${wasRead}></div>
             `;
         bookCards.appendChild(card);        
     }
     card = document.querySelectorAll('.card');
     console.log(card)
+    updateLibraryLog();
 }
 
 // clear form function
@@ -161,9 +179,23 @@ function deleteEntry(e) {
                 myLibrary = [];
             }
         }
+        // refreshes cards on page
+        addBookToLibrary(myLibrary[i]);
     }
-    // refreshes cards on page
+}
+
+// change was read function
+function wasRead(e) {
     for (let i=0; i<myLibrary.length; i++) {
-        addBookToLibrary(myLibrary[i])
+        if (e.target.matches(`.box${i}`)) {
+            let book = myLibrary[i];
+            if (book.wasRead === 'yes') {
+                book.wasRead = 'no';
+            } else {
+                book.wasRead = 'yes';
+            }
+        }
+        // refreshes cards on page
+        addBookToLibrary(myLibrary[i]);
     }
 }
