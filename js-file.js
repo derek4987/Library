@@ -20,6 +20,7 @@ function Book(title, author, pages, wasRead) {
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'yes');
 const Hobbit = new Book('Hobbit', 'J.R.R. Tolkien', 295, 'no');
+myLibrary.push(theHobbit,Hobbit);
 addBookToLibrary(theHobbit);
 addBookToLibrary(Hobbit);
 
@@ -59,6 +60,7 @@ document.querySelector('#modal-submit').addEventListener('click', function(e) {
     } else wasRead = 'no';
     if (title.value!=='' && author.value!=='' && pages.value!=='') {
         const newBook = new Book(title.value, author.value, pages.value, wasRead);
+        myLibrary.push(newBook);
         addBookToLibrary(newBook);
         closeModal();
     } else return;
@@ -77,13 +79,9 @@ for (let i=0; i<myLibrary.length; i++) {
 // delete card
 document.addEventListener('click', function(e) {
     if (e.target.matches('.delete-entry')) {
+        // removes entry from page
         deleteEntry(e);
         
-        if (myLibrary.length > 1) {
-            myLibrary.splice(i,1);
-        } else {
-            myLibrary = [];
-        };
         card = document.querySelectorAll('.card');
     }
 
@@ -131,7 +129,6 @@ function closeModal() {
 // store new book objects into myLibrary array and add card
 function addBookToLibrary(book) {
     bookCards.innerHTML = '';
-    myLibrary.push(book);
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
         const card = document.createElement('div');
@@ -181,6 +178,21 @@ function deleteEntry(e) {
     let parent = e.target.parentNode;
     console.log(parent);
     bookCards.removeChild(parent);
+
+    //removes associated object from myLibrary
+    for (let i=0; i<myLibrary.length; i++) {
+        if (e.target.matches(`#x${i}`)) {
+            if (myLibrary.length > 1) {
+                myLibrary.splice(i,1);
+            } else {
+                myLibrary = [];
+            }
+        }
+    }
+    // refreshes cards on page
+    for (let i=0; i<myLibrary.length; i++) {
+        addBookToLibrary(myLibrary[i])
+    }
 }
 
 // function deleteEntry() {
