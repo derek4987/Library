@@ -58,7 +58,7 @@ document.querySelector('#modal-submit').addEventListener('click', function(e) {
     if (document.getElementById('yes').checked === true) {
         wasRead = 'yes';
     } else wasRead = 'no';
-    if (title.value!=='' && author.value!=='' && pages.value!=='') {
+    if (title.value!=='' && author.value!=='' && (pages.value!=='' || pages.value<1)) {
         const newBook = new Book(title.value, author.value, pages.value, wasRead);
         myLibrary.push(newBook);
         addBookToLibrary(newBook);
